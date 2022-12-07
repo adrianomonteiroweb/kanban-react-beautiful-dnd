@@ -7,7 +7,7 @@ export const Login = () => {
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = (event: any) => {
     event.preventDefault();
     //👇🏻 saves the username to localstorage
     localStorage.setItem('userId', username);
