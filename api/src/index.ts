@@ -5,7 +5,11 @@ const server = require('http').createServer(app);
 
 app.use(cors());
 
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+  },
+});
 
 io.on('connection', (socket: any) => {
   console.log(`${socket.id} user just connected`);
@@ -15,4 +19,4 @@ io.on('connection', (socket: any) => {
   });
 });
 
-server.listen(3001, () => console.log('OK'));
+server.listen(4000, () => console.log('OK'));
