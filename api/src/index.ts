@@ -1,10 +1,18 @@
-import http from 'http';
+import { app } from './app';
 import cors from 'cors';
 
-import { app } from './app';
-
-new http.Server(app);
+const server = require('http').createServer(app);
 
 app.use(cors());
 
-app.listen(3001, () => console.log('OK'));
+const io = require('socket.io')(server);
+
+io.on('connection', (socket: any) => {
+  console.log(`${socket.id} user just connected`);
+  socket.on('disconnect', () => {
+    socket.disconnect();
+    console.log('A user disconnected');
+  });
+});
+
+server.listen(3001, () => console.log('OK'));
