@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 
+import './tasksContainer.css';
+
 export const TasksContainer = () => {
   return (
     <div className='container'>
       <div className='pending__wrapper'>
-        <h3>Pending Tasks</h3>
+        <h3>To do</h3>
         <div className='pending__container'>
           <div className='pending__items'>
             <p>Debug the Notification center</p>
@@ -16,7 +18,7 @@ export const TasksContainer = () => {
       </div>
 
       <div className='ongoing__wrapper'>
-        <h3>Ongoing Tasks</h3>
+        <h3>In Development</h3>
         <div className='ongoing__container'>
           <div className='ongoing__items'>
             <p>Create designs for Novu</p>
@@ -28,7 +30,7 @@ export const TasksContainer = () => {
       </div>
 
       <div className='completed__wrapper'>
-        <h3>Completed Tasks</h3>
+        <h3>Do</h3>
         <div className='completed__container'>
           <div className='completed__items'>
             <p>Debug the Notification center</p>

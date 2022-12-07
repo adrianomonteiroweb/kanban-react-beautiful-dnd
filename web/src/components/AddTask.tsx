@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
+import './addTask.css';
+
 export const AddTask = () => {
   const [task, setTask] = useState('');
 
-  const handleAddTodo = (event) => {
+  const handleAddTodo = (event: any) => {
     event.preventDefault();
     //👇🏻 Logs the task to the console
     console.log({ task });
@@ -12,17 +14,17 @@ export const AddTask = () => {
 
   return (
     <form className='form__input' onSubmit={handleAddTodo}>
-      <label htmlFor='task'>Add Todo</label>
       <input
         type='text'
         name='task'
         id='task'
         value={task}
         className='input'
+        placeholder='New Task'
         required
         onChange={(e) => setTask(e.target.value)}
       />
-      <button className='addTodoBtn'>ADD TODO</button>
+      <button className='addTodoBtn'>ADD TASK</button>
     </form>
   );
 };
