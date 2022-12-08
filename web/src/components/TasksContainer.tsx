@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { io, Socket } from 'socket.io-client';
 
 import './tasksContainer.css';
+
+const socket: Socket = io('http://localhost:4000');
 
 export const TasksContainer = () => {
   const [tasks, setTasks] = useState({});
@@ -17,7 +20,24 @@ export const TasksContainer = () => {
     })();
   }, []);
 
-  function handleDragEnd() {}
+  useEffect(() => {
+    socket.on('tasks', (data) => setTasks(data));
+  }, [socket]);
+
+  function handleDragEnd({ destination, source }: any) {
+    if (!destination) return;
+
+    if (
+      destination.index === source.index &&
+      destination.droppableId === source.droppableId
+    )
+      return;
+
+    socket.emit('taskDragged', {
+      source,
+      destination,
+    });
+  }
 
   return (
     <div className='container'>

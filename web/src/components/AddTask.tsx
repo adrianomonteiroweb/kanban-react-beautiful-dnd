@@ -7,8 +7,7 @@ export const AddTask = () => {
 
   const handleAddTodo = (event: any) => {
     event.preventDefault();
-    //👇🏻 Logs the task to the console
-    console.log({ task });
+
     setTask('');
   };
 
