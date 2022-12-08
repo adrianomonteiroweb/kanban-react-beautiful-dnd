@@ -1,6 +1,6 @@
 const fetchID = () => Math.random().toString(36).substring(2, 10);
 
-export const tasks = {
+export const tasks: any = {
   pending: {
     title: 'pending',
     items: [
