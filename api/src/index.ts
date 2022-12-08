@@ -1,9 +1,12 @@
 import { app } from './app';
 import cors from 'cors';
+import routes from './routes';
 
 const server = require('http').createServer(app);
 
 app.use(cors());
+
+app.use(routes);
 
 const io = require('socket.io')(server, {
   cors: {
